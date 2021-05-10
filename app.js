@@ -44,7 +44,13 @@ app.get("/posts/:id", (req, res) => {
 
 app.get("/users", (req, res) => {
     if(req.query.country)
-    {res.send(`<h1> list of users whose country is  ${req.query.country} </h1>`)}
+    {
+        if(req.query.birthMonth){
+            res.send(`<h1> list of users whose country is  ${req.query.country} and  birth month is in  ${req.query.birthMonth} </h1>`)
+        } else{
+            res.send(`<h1> list of users whose country is  ${req.query.country} </h1>`)
+        }
+}
     else{
         if(req.query.birthMonth){
             res.send(`<h1> list of users whose birth month is in  ${req.query.birthMonth} </h1>`)
